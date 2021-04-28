@@ -5,6 +5,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Entities.DTOs;
 
 namespace Business.Concrete
 {
@@ -34,7 +35,7 @@ namespace Business.Concrete
 
         public IDataResult<Car> GetById(int carId)
         {
-            return new SuccessDataResult<Car>(_carDal.Get(c=> c.CarId==carId));
+            return new SuccessDataResult<Car>(_carDal.Get(c=> c.Id==carId));
         }
 
       
@@ -42,6 +43,11 @@ namespace Business.Concrete
         public IResult Update(Car car)
         {
             throw new NotImplementedException();
+        }
+
+        public IDataResult<List<CarDetail>> GetCarDetail()
+        {
+            return new SuccessDataResult<List<CarDetail>>(_carDal.GetCarDetail());
         }
     }
 }
